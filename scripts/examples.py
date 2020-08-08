@@ -1,4 +1,5 @@
 import array
+import time
 
 import numpy as np
 import ground_removal_ext
@@ -19,10 +20,13 @@ def load_pc(bin_file_path):
 
 if __name__ == '__main__':
     pc = load_pc(
-        '/media/hvt/95f846d8-d39c-4a04-8b28-030feb1957c6/dataset/KITTI/tracking/training/velodyne/0000/000000.bin')
+        '/media/hvt/95f846d8-d39c-4a04-8b28-030feb1957c6/dataset/KITTI/tracking/training/velodyne/0008/000100.bin')
 
     # ground removal
-    segmentation = ground_removal_ext.ground_removal_kernel(pc, 0.2, 20)
+    tic = time.time()
+    segmentation = ground_removal_ext.ground_removal_kernel(pc, 0.2, 200)
+    toc = time.time()
+    print('TIME used: ', toc - tic)
 
     # Nx5, x, y, z, intensity, is_ground
     print(segmentation.shape)

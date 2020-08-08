@@ -29,6 +29,7 @@ py::array_t<float> ground_removal_kernel(
         cloud->points[i].intensity = ref_input(i, 3);
     }
 //    std::cout << "INPUT SHAPE: " << ref_input.shape(0) << " " << ref_input.shape(1) << std::endl;
+    std::cout << distance_th << " " << iter_times << std::endl;
 
     // filter ground
     FilterGroundResult segmentation = filter_ground(cloud, distance_th, iter_times);
@@ -66,7 +67,7 @@ PYBIND11_MODULE(ground_removal_ext, m) {
     m.doc() = "RANSAC Based groud removal";
 
     m.def("ground_removal_kernel", &ground_removal_kernel, "ground removal",
-          py::arg("input"),py::arg("distance_th"), py::arg("iter_times")
+          py::arg("input"), py::arg("distance_th"), py::arg("iter_times")
     );
 
 }

@@ -6,7 +6,7 @@
 git clone --recursive https://github.com/HViktorTsoi/pointcloud_ground_removal.git
 ```
 
-2. Compile and install
+2. Compile and install.
 
 ```bash
 python setup.py install
